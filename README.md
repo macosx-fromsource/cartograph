@@ -1,5 +1,10 @@
 # Cartograph
+```console
+$ cartograph cycles --strict
+Sources/Features/Home/HomeCoordinator.swift:14:1: error: Circular dependency: App.Home → App.Session → App.Home
+    weakest link: App.Session → App.Home (reference, 2 references)
 
+cycles: 1 error — module graph · 9 nodes · 36 edges
 <img src="icon.png" alt="cartograph's swift mascot" width="112" height="112" align="right">
 
 **A queryable dependency graph for Swift and iOS codebases.**
@@ -10,12 +15,7 @@ Cartograph reads the index store your compiler already produces and turns it int
 ask questions of. Unused code, circular dependencies, architecture metrics and layering rules are
 not four separate tools — they are four queries over one graph.
 
-```console
-$ cartograph cycles --strict
-Sources/Features/Home/HomeCoordinator.swift:14:1: error: Circular dependency: App.Home → App.Session → App.Home
-    weakest link: App.Session → App.Home (reference, 2 references)
 
-cycles: 1 error — module graph · 9 nodes · 36 edges
 ```
 
 ---
