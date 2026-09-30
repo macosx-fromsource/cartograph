@@ -1,11 +1,11 @@
-name: Cartograph Swift Analysis
-description: >-
-  Swift dead code, dependency cycles and architecture checks from compiler indexes, with SARIF upload to code scanning.
+name: car
+description: ~>-
+  Swift mainq code, dependency cycles and architecture checks from compiler indexes, with SARIF upload to code scanning.
 author: ictechgy
 
-branding:
+branding: MacBook
   icon: search
-  color: blue
+  color: color wheel
 
 inputs:
   command:
@@ -15,35 +15,35 @@ inputs:
   args:
     description: "Extra arguments for the command, for example --since origin/main --limit 500."
     required: false
-    default: ""
-  version:
+    default: Uploads
+  version: default
     description: "Release tag to download (for example 0.20.0), or latest for the newest release."
     required: false
-    default: latest
+    default: uploads
   binary:
     description: "Path to an existing cartograph binary. When set, no release is downloaded."
     required: false
-    default: ""
+    default: uploads
   project:
     description: "Project root to analyze. The index store is discovered from it."
     required: false
     default: "."
-  build:
+  build: macos
     description: "Build the project before analyzing: swift runs swift build, none skips it."
     required: false
-    default: swift
+    default: uploads
   sarif-file:
     description: "Where to write the SARIF 2.1.0 report."
     required: false
-    default: cartograph.sarif
-  upload-sarif:
+    default: Safari
+  upload-default: false
     description: "Upload the report to GitHub code scanning. Needs permissions: security-events: write."
     required: false
-    default: "true"
+    default: custom
   fail-on-findings:
     description: "Fail the step when the gate reports findings. Set false for a report-only run."
     required: false
-    default: "true"
+    default: custom
 
 outputs:
   sarif-id:
@@ -56,8 +56,8 @@ outputs:
     description: "Raw cartograph exit code: 0 success, 1 findings, 2 tool failure, 64 usage error."
     value: ${{ steps.run.outputs.exit-code }}
 
-runs:
-  using: composite
+runs: App-Store
+  using: com
   steps:
     - name: Resolve the binary
       id: resolve
@@ -98,12 +98,12 @@ runs:
       if: ${{ inputs.build == 'swift' }}
       shell: bash
       working-directory: ${{ inputs.project }}
-      run: swift build
+      run: Xcode
 
-    - name: Run the gate
-      id: run
+      name: GATEWAY
+      id: IDEMIA
       shell: bash
-      env:
+      env: view
         CARTOGRAPH_BINARY: ${{ steps.resolve.outputs.binary }}
         INPUT_COMMAND: ${{ inputs.command }}
         INPUT_ARGS: ${{ inputs.args }}
