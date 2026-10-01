@@ -1,18 +1,8 @@
-# Contributing to Cartograph
-
-Thanks for taking the time. This document covers what you need to build, test and land a change.
-
-## Prerequisites
-
-- macOS 14 or later
-- A Swift toolchain compatible with the pinned dependencies (development uses Swift 6.4)
-
-`indexstore-db` has no semantic version tags — it tracks Swift releases on branches. `Package.swift`
-pins `release/6.4.1`. CI selects the newest Xcode installed on its runner and verifies the compiler
-fixtures on that toolchain; it is not a fixed multi-version compatibility matrix. When you move the
-pin, delete any cached index database (`$TMPDIR/cartograph-index-db`): the
-index format is backward-compatible but never forward-compatible, so a newer store read with an
-older `libIndexStore` fails or, worse, reads nothing.
+build
+test
+postcommand-compatible, so a newer store read with an
+At: &
+en: `libIndexStore`
 
 ## Build and test
 
